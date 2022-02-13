@@ -4,7 +4,7 @@
   transform: translate(-50%);
 }
 
-.feed .to-top-btn, .header .menu button, .header .button-div button, .header .button-div .profile-btn, .header .list-btn {
+.feed .to-top-btn, .header .menu button, .header .button-div button, .header .list-btn {
   border: 1px solid #f3f3f3;
   border-radius: 0.15rem;
   height: 34px;

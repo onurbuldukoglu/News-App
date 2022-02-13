@@ -7,18 +7,20 @@ import {
 import {
   fab, faLinkedin, faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
+import PropTypes from 'prop-types';
 import Header from './components/Header';
 import Feed from './components/Feed';
 
-const App = () => {
+const App = (props) => {
+  const { urlQuery } = props;
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [inView, setInView] = useState(true);
   const handleInView = (s) => {
     setInView(s);
   };
-  const handleQuery = () => {
-    setQuery();
+  const handleQuery = (input) => {
+    setQuery(input);
     console.log(query);
   };
   // useEffect(() => {
@@ -40,6 +42,10 @@ const App = () => {
       <Feed articles={results} viewFunc={handleInView} />
     </div>
   );
+};
+
+App.propTypes = {
+  urlQuery: PropTypes.string.isRequired,
 };
 
 export default App;
