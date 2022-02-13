@@ -1,4 +1,4 @@
-.header .categories, .header h1 {
+.header .categories, .header a.no-style, .header h1 {
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -28,6 +28,13 @@ hr {
   background-color: #2e363d;
 }
 
+a.no-style {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+  cursor: auto;
+}
+
 .header {
   background-color: #2e363d;
   color: #f3f3f3;
@@ -44,6 +51,12 @@ hr {
   animation: fadeIn linear 1s;
   font-size: 2rem;
   margin: 0.5rem;
+}
+.header a.no-style {
+  cursor: pointer;
+}
+.header a.no-style h1 {
+  position: relative;
 }
 .header .header-right {
   position: absolute;
@@ -110,7 +123,6 @@ hr {
   top: 0;
   right: 0;
   padding-top: 12px;
-  border-radius: 0.15rem;
   z-index: 1;
 }
 .header .menu button {
@@ -163,8 +175,8 @@ hr {
   align-items: center;
 }
 .feed h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 .feed .masonry {
   display: flex;
@@ -233,8 +245,11 @@ hr {
   }
 }
 @media only screen and (max-width: 576px) {
-  .date {
+  .header .date {
     display: none;
+  }
+  .header .menu {
+    top: 55px;
   }
 }
 

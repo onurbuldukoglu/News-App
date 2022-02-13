@@ -1,16 +1,33 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import Search from './Search';
 import Today from './Today';
 import Categories from './Categories';
 import Menu from './Menu';
 
 const Header = (props) => {
-  const { view } = props;
+  const { view, queryFunction } = props;
   const [inView, setInView] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener('mousedown', (e) => {
+      if (dropdownRef.current && showMenu && !dropdownRef.current.contains(e.target)) {
+        if (showMenu === true) {
+          setShowMenu(false);
+        }
+      }
+    });
+  });
+
+  const handleMenuToggle = () => {
+    setShowMenu(true);
+  };
 
   useEffect(() => {
     setInView(view);
@@ -23,32 +40,35 @@ const Header = (props) => {
   return (
     <div className="header">
       { bigScreen
-        ? (
+        ? ( // if on a big screen display categories on the header
           <div className="header">
             <Today />
             { inView
               ? (<Categories />)
-              : <h1>NewsLetter</h1>}
+              : (<Link to="/" className="no-style"><h1>NewsLetter</h1></Link>)}
             <div className="button-div header-right">
-              <Search />
-              <button className="profile-btn" type="button" aria-label="profile"><FontAwesomeIcon icon="user" /></button>
+              <Search queryFunction={queryFunction} />
             </div>
           </div>
         )
-        : (
-          <div className="header">
+        : ( // if on a small screen display the title in the header and the categories under a menu
+          <div className="header" ref={dropdownRef}>
             <Today />
-            <h1>NewsLetter</h1>
-            <button className="list-btn header-right" type="button" aria-label="list"><FontAwesomeIcon icon="bars" /></button>
+            <Link to="/" className="no-style"><h1>NewsLetter</h1></Link>
+            {
+              showMenu
+                ? (<Menu />)
+                : (<button className="list-btn header-right" type="button" aria-label="list" onClick={handleMenuToggle}><FontAwesomeIcon icon="bars" /></button>)
+            }
           </div>
         )}
-      <Menu />
     </div>
   );
 };
 
 Header.propTypes = {
   view: PropTypes.bool.isRequired,
+  queryFunction: PropTypes.func.isRequired,
 };
 
 export default Header;

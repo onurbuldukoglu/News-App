@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-css';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 
 const Feed = (props) => {
@@ -309,13 +310,13 @@ const Feed = (props) => {
     <div className="feed">
       {bigScreen && (
       <div className="title-div">
-        <h1 ref={ref}>NewsLetter</h1>
+        <Link to="/" className="no-style"><h1 ref={ref}>NewsLetter</h1></Link>
         <hr />
       </div>
       )}
 
       <Masonry className="masonry" breakpointCols={breakpointColumnsObj} columnClassName="masonry-column">
-        {articlesArr.map((article) => (
+        {articles.map((article) => (
           <Card
             title={article.title}
             description={article.description}

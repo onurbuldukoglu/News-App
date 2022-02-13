@@ -14,7 +14,6 @@ $main-font: 'Yrsa', serif;
   background: transparent;
   color: $light-color;
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -26,6 +25,12 @@ hr {
   height: 1px;
   width: 80%;
   background-color: $dark-color;
+}
+a.no-style {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+  cursor: auto;
 }
 .header {
   background-color: $dark-color;
@@ -43,6 +48,13 @@ hr {
     animation: fadeIn linear 1s;
     font-size: 2rem;
     margin: 0.5rem;
+  }
+  a.no-style {
+    @extend %centered;
+    cursor: pointer;
+    h1 {
+      position: relative;
+    }
   }
   .header-right {
     position: absolute;
@@ -117,7 +129,6 @@ hr {
     top: 0;
     right: 0;
     padding-top: 12px;
-    border-radius: 0.15rem;
     z-index: 1;
     button {
       @extend %button;
@@ -170,8 +181,8 @@ hr {
     align-items: center;
   }
   h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
   .masonry {
     display: flex;
@@ -239,7 +250,12 @@ hr {
 }
 
 @media only screen and (max-width: 576px) {
-  .date {
-    display: none;
+  .header {
+    .date {
+      display: none;
+    }
+    .menu {
+      top: 55px;
+    }
   }
 }
