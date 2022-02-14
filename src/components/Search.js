@@ -1,36 +1,34 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useSearchParams } from 'react-router-dom';
 
 const Search = (props) => {
   const { queryFunction } = props;
   const [showBar, setShowBar] = useState(false);
   const [input, setInput] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleToggle = () => {
     setShowBar(true);
   };
-  const handleQuery = () => {
+
+  const handleSubmit = () => {
     queryFunction(input);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const newSearch = formData.get('search');
-    setSearchParams({ search: newSearch });
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
   };
 
   return (
     <div className="search-div">
       {showBar
         ? (
-          <form action={`/${input}`} onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search" name="search" onInput={(e) => setInput(e.target.value)} />
-            <button className="search-btn" type="submit" aria-label="search"><FontAwesomeIcon icon="search" onClick={handleQuery} /></button>
-          </form>
+          <div>
+            <input type="text" placeholder="Search" name="search" onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyPress} />
+            <button className="search-btn" type="submit" aria-label="search" onClick={handleSubmit}><FontAwesomeIcon icon="search" /></button>
+          </div>
         )
         : <button className="toggle-btn" type="button" aria-label="toggle-search" onClick={handleToggle}><FontAwesomeIcon icon="search" /></button>}
     </div>

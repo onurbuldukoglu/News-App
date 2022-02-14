@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react/cjs/react.development';
 import Header from './Header';
 import Feed from './Feed';
 
@@ -13,10 +12,10 @@ const TopHeadlines = (props) => {
   const handleInView = (s) => {
     setInView(s);
   };
-  useEffect(() => {
-    setTopic(category);
-    console.log(topic);
-  }, [category]);
+  // useEffect(() => {
+  //   setTopic(category);
+  //   console.log(topic);
+  // }, [category]);
   // useEffect(() => {
   //   fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&apiKey=f61fd3b021fd49a38cda24a807671be9&page=1`)
   //     .then((res) => res.json())

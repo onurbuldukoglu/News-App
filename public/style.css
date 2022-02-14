@@ -67,14 +67,19 @@ a.no-style {
 }
 .header .categories {
   animation: fadeIn linear 1s;
+  width: 38rem;
 }
-.header .categories a {
+.header .categories button {
+  font-family: "Yrsa", serif;
   color: #f3f3f3;
-  margin: 0 1rem;
-  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   letter-spacing: 0.1rem;
+  font-size: 1rem;
+  padding: 0 0.5rem;
 }
-.header .categories a:hover {
+.header .categories button:hover {
   text-decoration: underline;
   font-weight: 600;
 }
@@ -138,11 +143,12 @@ a.no-style {
   left: 0;
   transform: none;
 }
-.header .menu .categories a {
+.header .menu .categories button {
   margin: 0;
   padding: 0 0 0.5rem 0.5rem;
+  border-radius: 0;
 }
-.header .menu .categories a:hover {
+.header .menu .categories button:hover {
   border-left: 4px solid #f3f3f3;
   text-decoration: none;
 }
@@ -178,6 +184,9 @@ a.no-style {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
+.feed hr {
+  margin-bottom: 0;
+}
 .feed .masonry {
   display: flex;
   width: 80%;
@@ -192,10 +201,24 @@ a.no-style {
   bottom: 0.5rem;
   left: 0.5rem;
   font-size: 1rem;
+  cursor: pointer;
 }
 .feed .to-top-btn:hover {
   background: #2e363d;
   color: #f3f3f3;
+}
+.feed .pages button {
+  background-color: transparent;
+  color: #2e363d;
+  margin: 0 0.5rem;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  margin: 2rem 0.5rem;
+}
+.feed .pages button:hover {
+  font-weight: bold;
+  border-bottom: #2e363d 2px solid;
 }
 
 .card {

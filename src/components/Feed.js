@@ -8,11 +8,11 @@ import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-css';
-import { Link } from 'react-router-dom';
 import Card from './Card';
+import Pages from './Pages';
 
 const Feed = (props) => {
-  const { articles, viewFunc } = props;
+  const { articles, viewFunc, pageFunction } = props;
 
   const articlesArr = [
     {
@@ -310,7 +310,7 @@ const Feed = (props) => {
     <div className="feed">
       {bigScreen && (
       <div className="title-div">
-        <Link to="/" className="no-style"><h1 ref={ref}>NewsLetter</h1></Link>
+        <h1 ref={ref}>NewsLetter</h1>
         <hr />
       </div>
       )}
@@ -328,6 +328,8 @@ const Feed = (props) => {
           />
         ))}
       </Masonry>
+      <hr />
+      <Pages pageFunction={pageFunction} scrollFunction={toTheTop} />
       {!inView && <button type="button" className="to-top-btn" onClick={toTheTop} aria-label="to-top"><FontAwesomeIcon icon="arrow-up" /></button>}
     </div>
 
@@ -337,5 +339,6 @@ const Feed = (props) => {
 Feed.propTypes = {
   articles: PropTypes.array.isRequired,
   viewFunc: PropTypes.func.isRequired,
+  pageFunction: PropTypes.func.isRequired,
 };
 export default Feed;

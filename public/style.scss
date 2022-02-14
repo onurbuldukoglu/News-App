@@ -66,13 +66,18 @@ a.no-style {
   .categories {
     @extend %centered;
     animation: fadeIn linear 1s;
-    a {
+    width: 38rem;
+    button {
+      font-family: $main-font;
       color: $light-color;
-      margin: 0 1rem;
-      text-decoration: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
       letter-spacing: 0.1rem;
+      font-size: 1rem;
+      padding: 0 0.5rem;
     }
-    a:hover {
+    button:hover {
       text-decoration: underline;
       font-weight: 600;
     }
@@ -140,11 +145,12 @@ a.no-style {
       position: static;
       left: 0;
       transform: none;
-      a {
+      button {
         margin: 0;
         padding: 0 0 0.5rem 0.5rem;
+        border-radius: 0;
       }
-      a:hover {
+      button:hover {
         border-left: 4px solid $light-color;
         text-decoration: none;
       }
@@ -181,6 +187,9 @@ a.no-style {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
   }
+  hr {
+    margin-bottom: 0;
+  }
   .masonry {
     display: flex;
     width: 80%;
@@ -197,10 +206,26 @@ a.no-style {
     bottom: 0.5rem;
     left: 0.5rem;
     font-size: 1rem;
+    cursor: pointer;
   }
   .to-top-btn:hover {
     background: $dark-color;
     color: $light-color;
+  }
+  .pages {
+    button {
+      background-color: transparent;
+      color: $dark-color;
+      margin:0 0.5rem;
+      border: none;
+      cursor: pointer;
+      padding: 0 0.25rem;
+      margin: 2rem 0.5rem;
+    }
+    button:hover {
+      font-weight: bold;
+      border-bottom: $dark-color 2px solid;
+    }
   }
 }
 .card {

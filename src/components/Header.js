@@ -3,14 +3,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
 import Search from './Search';
 import Today from './Today';
 import Categories from './Categories';
 import Menu from './Menu';
 
 const Header = (props) => {
-  const { view, queryFunction } = props;
+  const { view, queryFunction, categoryFunction } = props;
   const [inView, setInView] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const dropdownRef = useRef(null);
@@ -44,8 +43,8 @@ const Header = (props) => {
           <div className="header">
             <Today />
             { inView
-              ? (<Categories />)
-              : (<Link to="/" className="no-style"><h1>NewsLetter</h1></Link>)}
+              ? (<Categories categoryFunction={categoryFunction} />)
+              : (<h1>NewsLetter</h1>)}
             <div className="button-div header-right">
               <Search queryFunction={queryFunction} />
             </div>
@@ -54,10 +53,10 @@ const Header = (props) => {
         : ( // if on a small screen display the title in the header and the categories under a menu
           <div className="header" ref={dropdownRef}>
             <Today />
-            <Link to="/" className="no-style"><h1>NewsLetter</h1></Link>
+            <h1>NewsLetter</h1>
             {
               showMenu
-                ? (<Menu />)
+                ? (<Menu categoryFunction={categoryFunction} />)
                 : (<button className="list-btn header-right" type="button" aria-label="list" onClick={handleMenuToggle}><FontAwesomeIcon icon="bars" /></button>)
             }
           </div>
@@ -69,6 +68,7 @@ const Header = (props) => {
 Header.propTypes = {
   view: PropTypes.bool.isRequired,
   queryFunction: PropTypes.func.isRequired,
+  categoryFunction: PropTypes.func.isRequired,
 };
 
 export default Header;
