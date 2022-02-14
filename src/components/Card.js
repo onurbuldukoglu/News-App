@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const Card = (props) => {
   const {
-    title, description, image, url, author, date,
+    key, title, description, image, url, author, date,
   } = props;
   const [desc, setDesc] = useState(description);
   const [img, setImg] = useState(image);
@@ -21,7 +21,7 @@ const Card = (props) => {
   });
 
   return (
-    <div className="card">
+    <div className="card" key={key}>
       <a href={url}><img src={img} alt="news-img" /></a>
       <div className="text-content">
         <a href={url}>{title}</a>
@@ -36,6 +36,7 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
+  key: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,

@@ -7,7 +7,7 @@ const Categories = () => {
   return (
     <div className="categories">
       {categories.map((category) => (
-        <Link to={`/${category}`}>{category}</Link>
+        <Link to={`/${category.toLowerCase()}`}>{category}</Link>
       ))}
     </div>
   );

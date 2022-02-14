@@ -7,12 +7,11 @@ import {
 import {
   fab, faLinkedin, faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Header from './components/Header';
 import Feed from './components/Feed';
 
-const App = (props) => {
-  const { urlQuery } = props;
+const App = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [inView, setInView] = useState(true);
@@ -21,10 +20,9 @@ const App = (props) => {
   };
   const handleQuery = (input) => {
     setQuery(input);
-    console.log(query);
   };
   // useEffect(() => {
-  //   fetch('https://newsapi.org/v2/everything?q=london&page=1&apiKey=f61fd3b021fd49a38cda24a807671be9')
+  //   fetch('https://newsapi.org/v2/everything?q=london&page=1&language=en&page=1&apiKey=f61fd3b021fd49a38cda24a807671be9')
   //     .then((res) => {
   //       if (res.ok) { return res.json(); }
   //       throw new Error('Something went wrong.');
@@ -34,7 +32,7 @@ const App = (props) => {
   //       (error) => error,
   //     )
   //     .then(console.log(results));
-  // });
+  // }, []);
 
   return (
     <div>
@@ -42,10 +40,6 @@ const App = (props) => {
       <Feed articles={results} viewFunc={handleInView} />
     </div>
   );
-};
-
-App.propTypes = {
-  urlQuery: PropTypes.string.isRequired,
 };
 
 export default App;

@@ -288,7 +288,7 @@ const Feed = (props) => {
 
   const breakpointColumnsObj = {
     default: 3,
-    1200: 4,
+    1200: 3,
     992: 3,
     768: 2,
     576: 1,
@@ -318,6 +318,7 @@ const Feed = (props) => {
       <Masonry className="masonry" breakpointCols={breakpointColumnsObj} columnClassName="masonry-column">
         {articles.map((article) => (
           <Card
+            key={`${article.urlToImage}${article.title}`}
             title={article.title}
             description={article.description}
             image={article.urlToImage}
