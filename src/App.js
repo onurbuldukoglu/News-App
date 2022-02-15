@@ -32,33 +32,31 @@ const App = () => {
     setPage(pageNumber);
   };
 
-  if (mode === 'search') {
-    useEffect(() => {
-      fetch(`https://newsapi.org/v2/everything?q=${query}&page=${page}&language=en&sortBy=popularity&pageSize=24&apiKey=f61fd3b021fd49a38cda24a807671be9`)
-        .then((res) => {
-          if (res.ok) { return res.json(); }
-          throw new Error('Something went wrong.');
-        })
-        .then(
-          (result) => { setResults(result.articles); },
-          (error) => error,
-        );
-      console.log('query mode');
-    }, [query, page]);
-  } else if (mode === 'category') {
-    useEffect(() => {
-      fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&page=${page}&pageSize=24&apiKey=f61fd3b021fd49a38cda24a807671be9`)
-        .then((res) => {
-          if (res.ok) { return res.json(); }
-          throw new Error('Something went wrong.');
-        })
-        .then(
-          (result) => { setResults(result.articles); },
-          (error) => error,
-        );
-      console.log('category mode');
-    }, [category, page]);
-  }
+  // if (mode === 'search') {
+  //   useEffect(() => {
+  //     fetch(`https://newsapi.org/v2/everything?q=${query}&page=${page}&language=en&sortBy=popularity&pageSize=24`)
+  //       .then((res) => {
+  //         if (res.ok) { return res.json(); }
+  //         throw new Error('Something went wrong.');
+  //       })
+  //       .then(
+  //         (result) => { setResults(result.articles); },
+  //         (error) => error,
+  //       );
+  //   }, [query, page]);
+  // } else if (mode === 'category') {
+  //   useEffect(() => {
+  //     fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&page=${page}&pageSize=24`)
+  //       .then((res) => {
+  //         if (res.ok) { return res.json(); }
+  //         throw new Error('Something went wrong.');
+  //       })
+  //       .then(
+  //         (result) => { setResults(result.articles); },
+  //         (error) => error,
+  //       );
+  //   }, [category, page]);
+  // }
 
   return (
     <div>
