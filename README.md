@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # News App
 
 ### [Link to App](https://onurbuldukoglu.github.io/News-App/)
@@ -11,4 +9,3 @@ The app is created with create-react-app. As an opportunity for learning and pra
 All the React components were created as functional components. To be able to use React state and lifecycle methods, useState and useEffect hooks, respectively, were used. For typechecking component props, React's built-in typechecking ability PropTypes were used. 
 
 Various npm packages were used to achieve specific goals, such as [react-masonry-css](https://www.npmjs.com/package/react-masonry-css) package for masonry look for the news cards on the feed and [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) for checking if an element is in viewport.
->>>>>>> merge-calls
