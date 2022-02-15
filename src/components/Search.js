@@ -26,7 +26,7 @@ const Search = (props) => {
       {showBar
         ? (
           <div>
-            <input type="text" placeholder="Search" name="search" onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyPress} />
+            <input type="text" placeholder="Search" name="search" onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyPress} autoComplete="off" />
             <button className="search-btn" type="submit" aria-label="search" onClick={handleSubmit}><FontAwesomeIcon icon="search" /></button>
           </div>
         )
